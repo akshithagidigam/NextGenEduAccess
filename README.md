@@ -1,65 +1,52 @@
-🎓 NextGen EduAccess
+🎓 NextGen EduAccess — AI-Powered Educational Management System
 
-AI-Powered Educational Management Platform built with Flask
+A Flask-based web application that modernizes academic management using AI-powered assignment analysis, plagiarism detection, attendance tracking, performance analytics, and real-time communication.
 
-NextGen EduAccess is a role-based academic management system that integrates attendance tracking, performance monitoring, AI-based assignment evaluation, plagiarism detection, quizzes, analytics, and real-time messaging into one centralized web application.
+📁 Project Structure
+nextgen_eduaccess/
+├── app.py                      # Main Flask application (routes + logic)
+├── ai_detector.py              # AI content detection (Supabase Edge Function)
+├── pdf_utils.py                # PDF text extraction utility
+├── reset_db.py                 # Database initialization/reset script
+├── nextgenedu.db               # SQLite database
+├── .env                        # Environment variables (secrets)
+│
+├── templates/
+│   ├── teacher_dashboard.html
+│   ├── student_dashboard.html
+│   ├── assignments.html
+│   ├── quiz.html
+│   └── ...
+│
+├── static/
+│   ├── css/responsive.css
+│   └── logo.png
+│
+└── uploads/                    # Student assignment uploads
+🚀 Quick Start
+Step 1 — Install Dependencies
+pip install flask python-dotenv scikit-learn requests pdfplumber
+Step 2 — Configure Environment Variables
 
-📌 Table of Contents
+Create a .env file in the project root:
 
-Overview
+SECRET_KEY=your_secret_key
+EMAIL_USER=your_gmail_address
+EMAIL_PASS=your_gmail_app_password
+DETECT_API_URL=your_supabase_edge_function_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+Step 3 — Initialize Database
+python reset_db.py
+Step 4 — Run the Application
+python app.py
 
-Features
+Open in browser:
 
-System Architecture
-
-Technology Stack
-
-Project Structure
-
-Installation
-
-Environment Variables
-
-Database Schema
-
-AI & Analytics Engine
-
-Security
-
-Future Improvements
-
-License
-
-📖 Overview
-
-NextGen EduAccess is designed to digitize academic workflows for institutions by providing:
-
-Centralized attendance management
-
-Automated grading system
-
-AI-based assignment verification
-
-Plagiarism detection
-
-Email notifications
-
-Subject-wise quizzes
-
-Academic performance analytics
-
-Real-time teacher–student communication
-
-The platform supports two primary user roles:
-
-Teacher
-
-Student
-
-✨ Features
+http://localhost:5000
+👥 User Roles
 👩‍🏫 Teacher Portal
 
-Secure login (subject-scoped)
+Secure subject-based login
 
 Period-wise attendance marking
 
@@ -67,15 +54,15 @@ Duplicate attendance prevention
 
 Marks entry (Mid-1, Mid-2, Semester)
 
-Automatic grade calculation
+Automatic grade and result calculation
 
 Assignment creation with due dates
 
-AI detection score per submission
+AI-generated content detection
 
 Peer plagiarism detection
 
-Fail-alert email notifications to parents
+Automatic fail-alert email notifications
 
 View student absence reasons
 
@@ -87,9 +74,9 @@ Class performance analytics dashboard
 
 Secure UID-based login
 
-Dashboard with pending assignment counter
+Dashboard with pending assignments
 
-Personal attendance tracking
+Period-wise attendance view
 
 Absence reason submission
 
@@ -107,84 +94,42 @@ DBMS
 
 Cryptography
 
-Quiz score progression tracking
+Quiz performance tracking
 
 Timetable view
 
 Messaging with teachers
 
-🏗️ System Architecture
+🤖 AI & Detection Engine
+AI Content Detection
 
-Client (Browser)
-⬇
-Flask Application (app.py)
-⬇
-SQLite Database (nextgenedu.db)
-⬇
-AI Services:
+Integrated with Supabase Edge Function
 
-Supabase Edge Function (AI detection)
+Returns AI confidence score and verdict
 
-TF-IDF + Cosine Similarity (Plagiarism)
+Plagiarism Detection
 
-🛠 Technology Stack
-Layer	Technology	Purpose
-Backend	Python + Flask	Routing, sessions, business logic
-Database	SQLite	Persistent data storage
-Frontend	HTML + Jinja2	Server-rendered UI
-Styling	Custom CSS	Responsive layout
-AI Detection	Supabase Edge Function	Detect AI-generated text
-Plagiarism	scikit-learn (TF-IDF)	Similarity scoring
-PDF Handling	pdfplumber	Extract text from PDFs
-Email Alerts	smtplib (Gmail SMTP)	Automated notifications
-Config	python-dotenv	Environment variable management
-📁 Project Structure
-nextgen_eduaccess/
-├── app.py
-├── ai_detector.py
-├── pdf_utils.py
-├── reset_db.py
-├── nextgenedu.db
-├── .env
-│
-├── templates/
-│   ├── teacher_dashboard.html
-│   ├── student_dashboard.html
-│   ├── assignments.html
-│   ├── quiz.html
-│   └── ...
-│
-├── static/
-│   ├── css/responsive.css
-│   └── logo.png
-│
-└── uploads/
-🚀 Installation
-1️⃣ Clone the Repository
-git clone <repository-url>
-cd nextgen-eduaccess
-2️⃣ Install Dependencies
-pip install flask python-dotenv scikit-learn requests pdfplumber
-3️⃣ Configure Environment Variables
+TF-IDF Vectorization
 
-Create a .env file:
+Cosine Similarity comparison
 
-SECRET_KEY=your_secret_key
-EMAIL_USER=your_gmail_address
-EMAIL_PASS=your_gmail_app_password
-DETECT_API_URL=your_supabase_edge_function_url
-SUPABASE_ANON_KEY=your_supabase_anon_key
-4️⃣ Initialize Database
-python reset_db.py
-5️⃣ Run the Application
-python app.py
+Peer-to-peer submission matching
 
-Open in browser:
+Relevance scoring vs assignment description
 
-http://localhost:5000
-🗄 Database Schema
+📊 Analytics Features
 
-Main tables:
+Class average, minimum, and maximum marks
+
+Pass / Fail distribution
+
+Grade distribution per subject
+
+Quiz progression tracking
+
+Assignment submission analysis
+
+🗄️ Database Tables
 
 students
 
@@ -210,29 +155,8 @@ quiz_attempts
 
 messages
 
-Database: SQLite (nextgenedu.db)
+Database used: SQLite (nextgenedu.db)
 
-🤖 AI & Analytics Engine
-AI Content Detection
+License
 
-Supabase Edge Function integration
-
-Returns AI confidence score and verdict
-
-Plagiarism Detection
-
-TF-IDF vectorization
-
-Cosine similarity scoring
-
-Peer submission comparison
-
-Academic Analytics
-
-Pass/Fail distribution
-
-Grade distribution
-
-Average / Min / Max marks
-
-Quiz progression tracking
+Developed for academic and educational purposes.
