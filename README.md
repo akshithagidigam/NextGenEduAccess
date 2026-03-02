@@ -1,20 +1,20 @@
-🎓 NextGen EduAccess
-AI-Powered Educational Management System
+# 🎓 NextGen EduAccess
+
+## AI-Powered Educational Management System
 
 A Flask-based web application that modernizes academic management using:
 
-🤖 AI-powered assignment analysis
+* 🤖 AI-powered assignment analysis
+* 🧠 Plagiarism detection
+* 📅 Attendance tracking
+* 📊 Performance analytics
+* 💬 Real-time communication
 
-🧠 Plagiarism detection
+---
 
-📅 Attendance tracking
+# 📁 Project Structure
 
-📊 Performance analytics
-
-💬 Real-time communication
-
-📁 Project Structure
-
+```
 nextgen_eduaccess/
 │
 ├── app.py                      # Main Flask application (routes + logic)
@@ -35,161 +35,152 @@ nextgen_eduaccess/
 │   ├── css/responsive.css
 │   └── logo.png
 │
-└── uploads/                   
-🚀 Quick Start Guide
-Step 1 — Install Dependencies
-pip install flask python-dotenv scikit-learn requests pdfplumber
-Step 2 — Configure Environment Variables
+└── uploads/                    # Student assignment uploads
+```
 
-Create a .env file in the project root:
+---
+
+# 🚀 Quick Start Guide
+
+## Step 1 — Install Dependencies
+
+```bash
+pip install flask python-dotenv scikit-learn requests pdfplumber
+```
+
+## Step 2 — Configure Environment Variables
+
+Create a `.env` file in the project root:
+
+```
 SECRET_KEY=your_secret_key
 EMAIL_USER=your_gmail_address
 EMAIL_PASS=your_gmail_app_password
 DETECT_API_URL=your_supabase_edge_function_url
 SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-Step 3 — Initialize Database
+## Step 3 — Initialize Database
+
+```bash
 python reset_db.py
+```
 
-Step 4 — Run the Application
+## Step 4 — Run the Application
+
+```bash
 python app.py
+```
 
 Open in browser:
 
+```
 http://localhost:5000
+```
 
-👥 User Roles
-👩‍🏫 Teacher Portal
+---
 
-Secure subject-based login
+# 👥 User Roles
 
-Period-wise attendance marking
+## 👩‍🏫 Teacher Portal
 
-Duplicate attendance prevention
+* Secure subject-based login
+* Period-wise attendance marking
+* Duplicate attendance prevention
+* Marks entry (Mid-1, Mid-2, Semester)
+* Automatic grade & result calculation
+* Assignment creation with due dates
+* 🤖 AI-generated content detection
+* 🔍 Peer plagiarism detection
+* 🚨 Automatic fail-alert email notifications
+* View student absence reasons
+* 💬 Real-time messaging system
+* 📊 Class performance analytics dashboard
 
-Marks entry (Mid-1, Mid-2, Semester)
+---
 
-Automatic grade & result calculation
+## 👨‍🎓 Student Portal
 
-Assignment creation with due dates
+* Secure UID-based login
+* Dashboard with pending assignments
+* Period-wise attendance view
+* Absence reason submission
+* Subject-wise marks display
+* Assignment submission (PDF or Text)
 
-🤖 AI-generated content detection
+### 📘 Quiz Modules
 
-🔍 Peer plagiarism detection
+* Computer Networks
+* Python
+* DBMS
+* Cryptography
 
-🚨 Automatic fail-alert email notifications
+### Additional Features
 
-View student absence reasons
+* Quiz performance tracking
+* Timetable view
+* Messaging with teachers
 
-💬 Real-time messaging system
+---
 
-📊 Class performance analytics dashboard
+# 🤖 AI & Detection Engine
 
-👨‍🎓 Student Portal
+## AI Content Detection
 
-Secure UID-based login
+* Integrated with Supabase Edge Function
+* Returns AI confidence score
+* Provides AI usage verdict
 
-Dashboard with pending assignments
+## Plagiarism Detection
 
-Period-wise attendance view
+* TF-IDF Vectorization
+* Cosine Similarity comparison
+* Peer-to-peer submission matching
+* Relevance scoring vs assignment description
 
-Absence reason submission
+---
 
-Subject-wise marks display
+# 📊 Analytics Features
 
-Assignment submission (PDF or Text)
+* Class average, minimum & maximum marks
+* Pass / Fail distribution
+* Grade distribution per subject
+* Quiz progression tracking
+* Assignment submission analysis
 
-📘 Quiz Modules
+---
 
-Computer Networks
+# 🗄️ Database Design
 
-Python
+**Database Used:** SQLite (`nextgenedu.db`)
 
-DBMS
+## Tables
 
-Cryptography
+* students
+* teachers
+* subjects
+* timetable
+* attendance
+* absence_reasons
+* student_marks
+* assignments
+* student_assignments
+* questions
+* quiz_attempts
+* messages
 
-Additional Features:
+---
 
-Quiz performance tracking
+# 🛡️ Security Features
 
-Timetable view
+* Secure authentication system
+* Role-based access control
+* Environment variable protection
+* Duplicate attendance validation
+* Controlled file uploads
 
-Messaging with teachers
+---
 
-🤖 AI & Detection Engine
-AI Content Detection
-
-Integrated with Supabase Edge Function
-
-Returns AI confidence score
-
-Provides AI usage verdict
-
-Plagiarism Detection
-
-TF-IDF Vectorization
-
-Cosine Similarity comparison
-
-Peer-to-peer submission matching
-
-Relevance scoring vs assignment description
-
-📊 Analytics Features
-
-Class average, minimum & maximum marks
-
-Pass / Fail distribution
-
-Grade distribution per subject
-
-Quiz progression tracking
-
-Assignment submission analysis
-
-🗄️ Database Design
-
-Database Used: SQLite (nextgenedu.db)
-
-Tables
-
-students
-
-teachers
-
-subjects
-
-timetable
-
-attendance
-
-absence_reasons
-
-student_marks
-
-assignments
-
-student_assignments
-
-questions
-
-quiz_attempts
-
-messages
-
-🛡️ Security Features
-
-Secure authentication system
-
-Role-based access control
-
-Environment variable protection
-
-Duplicate attendance validation
-
-Controlled file uploads
-
-📌 License
+# 📌 License
 
 Developed for academic and educational purposes only.
