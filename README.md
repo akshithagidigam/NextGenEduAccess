@@ -1,9 +1,22 @@
-🎓 NextGen EduAccess — AI-Powered Educational Management System
+🎓 NextGen EduAccess
+AI-Powered Educational Management System
 
-A Flask-based web application that modernizes academic management using AI-powered assignment analysis, plagiarism detection, attendance tracking, performance analytics, and real-time communication.
+A Flask-based web application that modernizes academic management using:
+
+🤖 AI-powered assignment analysis
+
+🧠 Plagiarism detection
+
+📅 Attendance tracking
+
+📊 Performance analytics
+
+💬 Real-time communication
 
 📁 Project Structure
+
 nextgen_eduaccess/
+│
 ├── app.py                      # Main Flask application (routes + logic)
 ├── ai_detector.py              # AI content detection (Supabase Edge Function)
 ├── pdf_utils.py                # PDF text extraction utility
@@ -22,27 +35,29 @@ nextgen_eduaccess/
 │   ├── css/responsive.css
 │   └── logo.png
 │
-└── uploads/                    # Student assignment uploads
-🚀 Quick Start
+└── uploads/                   
+🚀 Quick Start Guide
 Step 1 — Install Dependencies
 pip install flask python-dotenv scikit-learn requests pdfplumber
 Step 2 — Configure Environment Variables
 
 Create a .env file in the project root:
-
 SECRET_KEY=your_secret_key
 EMAIL_USER=your_gmail_address
 EMAIL_PASS=your_gmail_app_password
 DETECT_API_URL=your_supabase_edge_function_url
 SUPABASE_ANON_KEY=your_supabase_anon_key
+
 Step 3 — Initialize Database
 python reset_db.py
+
 Step 4 — Run the Application
 python app.py
 
 Open in browser:
 
 http://localhost:5000
+
 👥 User Roles
 👩‍🏫 Teacher Portal
 
@@ -54,21 +69,21 @@ Duplicate attendance prevention
 
 Marks entry (Mid-1, Mid-2, Semester)
 
-Automatic grade and result calculation
+Automatic grade & result calculation
 
 Assignment creation with due dates
 
-AI-generated content detection
+🤖 AI-generated content detection
 
-Peer plagiarism detection
+🔍 Peer plagiarism detection
 
-Automatic fail-alert email notifications
+🚨 Automatic fail-alert email notifications
 
 View student absence reasons
 
-Real-time messaging system
+💬 Real-time messaging system
 
-Class performance analytics dashboard
+📊 Class performance analytics dashboard
 
 👨‍🎓 Student Portal
 
@@ -84,7 +99,7 @@ Subject-wise marks display
 
 Assignment submission (PDF or Text)
 
-Quiz modules:
+📘 Quiz Modules
 
 Computer Networks
 
@@ -93,6 +108,8 @@ Python
 DBMS
 
 Cryptography
+
+Additional Features:
 
 Quiz performance tracking
 
@@ -105,7 +122,9 @@ AI Content Detection
 
 Integrated with Supabase Edge Function
 
-Returns AI confidence score and verdict
+Returns AI confidence score
+
+Provides AI usage verdict
 
 Plagiarism Detection
 
@@ -119,7 +138,7 @@ Relevance scoring vs assignment description
 
 📊 Analytics Features
 
-Class average, minimum, and maximum marks
+Class average, minimum & maximum marks
 
 Pass / Fail distribution
 
@@ -129,7 +148,11 @@ Quiz progression tracking
 
 Assignment submission analysis
 
-🗄️ Database Tables
+🗄️ Database Design
+
+Database Used: SQLite (nextgenedu.db)
+
+Tables
 
 students
 
@@ -155,8 +178,18 @@ quiz_attempts
 
 messages
 
-Database used: SQLite (nextgenedu.db)
+🛡️ Security Features
 
-License
+Secure authentication system
 
-Developed for academic and educational purposes.
+Role-based access control
+
+Environment variable protection
+
+Duplicate attendance validation
+
+Controlled file uploads
+
+📌 License
+
+Developed for academic and educational purposes only.
