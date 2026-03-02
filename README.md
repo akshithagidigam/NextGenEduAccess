@@ -1,117 +1,90 @@
-🎓 NextGen EduAccess
-AI-Powered Educational Management Platform
+🎓 NextGen EduAccess — AI-Powered Educational Management System
 
-NextGen EduAccess is a Flask-based Educational Management System designed to modernize academic workflows. It centralizes attendance management, performance tracking, AI-based assignment evaluation, quizzes, messaging, and analytics into a single web platform.
+A Flask-based web application that modernizes academic management using AI-driven assignment analysis, plagiarism detection, attendance tracking, performance analytics, and real-time communication.
 
-The system supports two primary roles:
+📁 Project Structure
+nextgen_eduaccess/
+├── app.py                      # Main Flask application (routes + business logic)
+├── ai_detector.py              # AI content detection (Supabase Edge Function)
+├── pdf_utils.py                # PDF text extraction utility
+├── reset_db.py                 # Database initialization/reset script
+├── nextgenedu.db               # SQLite database
+├── .env                        # Environment variables (secrets)
+│
+├── templates/                  # Jinja2 HTML templates
+│   ├── teacher_dashboard.html
+│   ├── student_dashboard.html
+│   ├── assignments.html
+│   ├── quiz.html
+│   └── ...
+│
+├── static/
+│   ├── css/responsive.css      # Custom responsive styling
+│   └── logo.png
+│
+└── uploads/                    # Student assignment PDF uploads
+🚀 Quick Start
+Step 1 — Install Dependencies
+pip install flask python-dotenv scikit-learn requests pdfplumber
+Step 2 — Configure Environment Variables
 
-Teachers – Manage attendance, marks, assignments, and student communication.
+Create a .env file in the project root:
 
-Students – View academic data, submit assignments, attempt quizzes, and message teachers.
+SECRET_KEY=your_secret_key
+EMAIL_USER=your_gmail_address
+EMAIL_PASS=your_gmail_app_password
+DETECT_API_URL=your_supabase_edge_function_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+Step 3 — Initialize Database
+python reset_db.py
+Step 4 — Run the Application
+python app.py
 
-🚀 Project Overview
+Open in browser:
 
-NextGen EduAccess improves transparency, reduces manual errors, and enhances academic monitoring through a secure, role-based web application.
-
-The platform includes:
-
-Period-wise attendance tracking
-
-Automated grade calculation
-
-AI-based assignment detection
-
-Plagiarism checking
-
-Email alerts for failures
-
-Real-time messaging
-
-Subject-wise quiz system
-
-Performance analytics dashboard
-
-🛠️ Technology Stack
-Backend
-
-Python
-
-Flask (Routing, Session Management, Business Logic)
-
-Database
-
-SQLite (nextgenedu.db)
-
-Frontend
-
-HTML
-
-Jinja2 Templates
-
-Styling
-
-Custom CSS (responsive.css)
-
-AI & Detection
-
-Supabase Edge Function (AI-generated content detection)
-
-scikit-learn (TF-IDF & Cosine Similarity for plagiarism detection)
-
-Utilities
-
-pdfplumber (PDF text extraction)
-
-smtplib (Email notifications)
-
-python-dotenv (.env configuration management)
-
-✨ Core Features
+http://localhost:5000
+👥 User Roles
 👩‍🏫 Teacher Portal
 
-Secure login with subject-scoped access
+Secure login (subject-scoped access)
 
-Dashboard with student list and timetable
+Period-wise attendance marking
 
-Period-wise attendance marking (duplicate prevention)
+Duplicate attendance prevention
 
-Marks entry for Mid-1, Mid-2, Semester
+Marks entry (Mid-1, Mid-2, Semester)
 
-Automatic grade and result calculation
+Automatic grade calculation
 
-Assignment creation with due dates and max marks
+Assignment creation with due dates
 
-Assignment evaluation panel with:
+AI-generated content detection
 
-AI detection score
+Peer plagiarism detection
 
-Relevance score
+Automatic fail-alert email notifications
 
-Plagiarism score
+View student absence reasons
 
-Automatic fail-alert emails to parents
+Real-time messaging system
 
-View absence reasons submitted by students
-
-Real-time messaging with students
-
-Class analytics (pass/fail, average, grade distribution)
+Class analytics dashboard
 
 👨‍🎓 Student Portal
 
-Secure login using UID and password
+Secure login (UID-based)
 
-Dashboard with pending assignment count
+Dashboard with pending assignments
 
-Personal attendance view (period-wise)
+Period-wise attendance view
 
 Absence reason submission
 
-Subject-wise marks with grade and result
+Subject-wise marks with grade & result
 
-Assignment submission via PDF upload or text entry
+Assignment submission (PDF/Text)
 
-Quiz modules for:
+Subject-based quizzes:
 
 Computer Networks
 
@@ -121,29 +94,48 @@ DBMS
 
 Cryptography
 
-Quiz performance tracking and score progression
+Quiz performance tracking
 
 Timetable view
 
 Messaging with teachers
 
-🤖 AI & Analytics Module
+🤖 AI & Detection Engine
+1️⃣ AI Content Detection
 
-The system integrates intelligent analysis features:
+Integrated with Supabase Edge Function
 
-AI-generated content detection using Supabase Edge Function
+Returns:
 
-TF-IDF cosine similarity scoring for relevance
+AI confidence score
 
-Peer plagiarism detection (student vs student comparison)
+Verdict (AI-generated / Human-written)
 
-Subject-wise grade distribution analysis
+2️⃣ Plagiarism Detection
 
-Class-level performance metrics (average, min, max, pass ratio)
+TF-IDF Vectorization
 
-🗄️ Database Schema Overview
+Cosine Similarity comparison
 
-The application uses SQLite with the following key tables:
+Peer-to-peer submission comparison
+
+Relevance scoring vs assignment description
+
+📊 Analytics Features
+
+Class average, min, max marks
+
+Pass / Fail distribution
+
+Grade distribution per subject
+
+Quiz progression tracking
+
+Assignment submission analysis
+
+🗄️ Database Overview
+
+Main tables used:
 
 students
 
@@ -169,73 +161,20 @@ quiz_attempts
 
 messages
 
-All data is securely stored in the nextgenedu.db database.
+All data stored in SQLite (nextgenedu.db).
 
-⚙️ Installation & Setup
-✅ Prerequisites
+📌 Academic Features Analyzed
 
-Python 3.10+
+Period-wise attendance tracking
 
-pip
+Mid-term & Semester exam scoring
 
-Gmail account with App Password enabled
+Automatic result classification (PASS/FAIL)
 
-Supabase project with deployed detect-text Edge Function
+Assignment AI detection score
 
-📦 Installation Steps
-1️⃣ Clone the Project
+Plagiarism similarity percentage
 
-git clone <repository-url>
-cd nextgen-eduaccess
+Quiz attempt history & progression
 
-2️⃣ Install Dependencies
-
-pip install flask python-dotenv scikit-learn requests pdfplumber
-
-3️⃣ Create .env File in Root Directory
-
-Add the following variables:
-
-SECRET_KEY=your_secret_key
-EMAIL_USER=your_gmail_address
-EMAIL_PASS=your_gmail_app_password
-DETECT_API_URL=your_supabase_edge_function_url
-SUPABASE_ANON_KEY=your_supabase_anon_key
-
-4️⃣ Initialize Database
-
-python reset_db.py
-
-5️⃣ Run the Application
-
-python app.py
-
-6️⃣ Open in Browser
-
-http://localhost:5000
-
-📂 Project Structure
-
-NextGenEduAccess/
-│
-├── app.py
-├── ai_detector.py
-├── pdf_utils.py
-├── reset_db.py
-├── nextgenedu.db
-├── .env
-│
-├── templates/
-│ ├── teacher_dashboard.html
-│ ├── student_dashboard.html
-│ └── other HTML files
-│
-├── static/
-│ ├── css/responsive.css
-│ └── logo.png
-│
-└── uploads/
-
-License
-
-This project is developed for academic and educational purposes.
+Student-teacher communication logs
